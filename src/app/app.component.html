@@ -1,0 +1,54 @@
+
+<div class="uno">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="">
+      <mat-icon>dialpad</mat-icon>
+      <span>Inicio</span>
+    </button>
+    <button mat-menu-item routerLink="/afiliados">
+      <mat-icon>account_box</mat-icon>
+      <span>Afiliados</span>
+    </button>
+    <button mat-menu-item routerLink="/detalleafiliado/2">
+      <mat-icon>account_circle</mat-icon>
+      <span>Detalles de Afiliado</span>
+    </button>
+    <button mat-menu-item routerLink="registro">
+      <mat-icon>dialpad</mat-icon>
+      <span>Registro afiliados</span>
+    </button>
+    
+  </mat-menu>
+  
+  </div>
+  <div class="dos">
+    <router-outlet></router-outlet>
+  </div>
+  
+  <div class="tres">
+    <mat-card class="example-card">
+      <mat-card-header>
+      </mat-card-header>
+      <img class="imagen" mat-card-image src="assets/moanto.png" alt="">
+      <mat-card-content>
+       
+      </mat-card-content>
+      <mat-card-actions>
+          <button mat-button><a href="https://www.facebook.com/AntonioELPARAO/"><img src="assets/f.png" width="70%" /></a></button>
+          <button mat-button><a href="https://twitter.com/antonioelparao"><img src="assets/t.png" width="70%" /></a></button>
+      </mat-card-actions>
+    </mat-card> 
+    <mat-card class="example-card">
+      <mat-card-header>
+      </mat-card-header>
+      <mat-card-content>
+      </mat-card-content>
+      <mat-card-actions>
+        
+      </mat-card-actions>
+    </mat-card> 
+  
+  </div>

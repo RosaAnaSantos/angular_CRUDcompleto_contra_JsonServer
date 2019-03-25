@@ -1,0 +1,57 @@
+
+<div class="div">
+ <mat-card class="example-card">
+    <h1>Partido de Vagos de España</h1> 
+    <h2>Documento de Afiliación</h2>
+ </mat-card>
+ <mat-card class="example-card"> 
+<form class="example-form">
+  
+  <mat-form-field class="example-full-width">
+      <input matInput  type="text" placeholder="Nombre" name="nombre" [(ngModel)]='afiliado.nombre' >
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput  type="text" placeholder="Apellidos" name="apellidos" [(ngModel)]='afiliado.apellidos' >
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+      <input matInput  type="text" placeholder="Edad" name="edad" [(ngModel)]='afiliado.edad' >
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+      <input matInput  type="text" placeholder="Profesión" name="profesion" [(ngModel)]='afiliado.profesion' >
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+      <input matInput  type="text" placeholder="Ideología" name="ideologia" [(ngModel)]='afiliado.ideologia' >
+    </mat-form-field>
+
+    <mat-radio-group #radioGroup="matRadioGroup"  [(ngModel)]="selection" >
+        <mat-radio-button value="caballero" >Caballero</mat-radio-button>
+        <mat-radio-button value="señora" >Señora</mat-radio-button>
+    </mat-radio-group >
+<div>{{selection}}</div>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Su cuota mensual es de ---" name='cuota' [(ngModel)]='afiliado.cuota'>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Indique que cargo le gustaría ocupar y en que cartera" name='status'[(ngModel)]='afiliado.status'    ></textarea>
+  </mat-form-field>
+</form>
+<button mat-raised-button
+        matTooltip="Info about the action"
+        aria-label="Button that displays a tooltip when focused or hovered over" (click)="altaAfiliado();">
+  ENVIAR
+</button>
+
+<button mat-raised-button
+        matTooltip="Info about the action"
+        aria-label="Button that displays a tooltip when focused or hovered over">
+  LIMPIAR
+</button>
+</mat-card>
+
+</div>

@@ -1,0 +1,122 @@
+<!--
+<mat-list role="list" *ngIf="afiliado | async as afiliado">
+    <mat-list-item role="listitem">Numero Afiliado: {{afiliado.id}}</mat-list-item>
+    <mat-list-item role="listitem">Nombre: {{afiliado.nombre}}</mat-list-item>
+    <mat-list-item role="listitem">Apellidos: {{afiliado.apellidos}}</mat-list-item>
+    <mat-list-item role="listitem">Profesión: {{afiliado.profesion}}</mat-list-item>
+    <mat-list-item role="listitem">Ideología: {{afiliado.ideologia}}</mat-list-item>
+    <mat-list-item role="listitem">sexo: {{afiliado.sexo}}</mat-list-item>
+    <mat-list-item role="listitem">Cuota: {{afiliado.cuota}}</mat-list-item>
+    <mat-list-item role="listitem">Cargo: {{afiliado.status}}</mat-list-item>
+  </mat-list>
+  
+  <button mat-flat-button color="primary" (click)="atras()">Atrás</button>
+  <button mat-button (click)="atras()" >Atrás</button>
+
+-->
+  
+<div class="cero">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <h1>Detalle de afiliado al partido</h1> 
+      </mat-card-header>
+    </mat-card>
+   </div>
+   <div class="cero">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <table border ="1" *ngIf="afiliado | async as afiliado"  width="100%">
+            <tr>
+              <th>Número</th>
+              <th>Nombre</th>
+              <th>Apellidos</th>
+              <th>Profesión</th>
+              <th>Ideología</th>
+              <th>Edad</th>
+              <th>Tratamiento</th>
+              <th>Aportación</th>
+              <th>Status</th>
+            </tr>
+            <tr>
+              <td>{{afiliado.id}}</td>
+              <td>{{afiliado.nombre}}</td>
+              <td>{{afiliado.apellidos}}</td>
+              <td>{{afiliado.profesion}}</td>
+              <td>{{afiliado.ideologia}}</td>
+              <td>{{afiliado.edad}}</td>
+              <td>{{afiliado.sexo}}</td>
+              <td>{{afiliado.cantidad}}</td>
+              <td>{{afiliado.status}}</td> 
+              <td>
+                  <a mat-button color="warn" (click)="deleteAfiliado(afiliado)" 
+                  [routerLink]="['/afiliados']">ELIMINAR</a>
+                  <a mat-button color="primari" (click)="updateAfiliado(afiliado)" 
+                  [routerLink]="['/registro']">EDITAR</a>
+              </td>  
+            </tr>
+          </table>
+          <hr>
+        </mat-card-header>
+      </mat-card>
+     </div>
+
+<div class="oculto">
+
+  <h1>hola-----</h1>
+</div>
+
+<!--
+<div>
+   <table mat-table  *ngIf="afiliado | async as afiliado"  class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id</th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} 12</td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombre}}rosa</td>
+  </ng-container>
+
+  <ng-container matColumnDef="apellidos">
+    <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+    <td  mat-cell *matCellDef="let element"> {{element.apellidos}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="profesion">
+    <th mat-header-cell *matHeaderCellDef> Profesión </th>
+    <td mat-cell *matCellDef="let element"> {{element.profesion}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ideologia">
+    <th mat-header-cell *matHeaderCellDef> Ideología </th>
+    <td mat-cell *matCellDef="let element"> {{element.ideologia}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="sexo">
+    <th mat-header-cell *matHeaderCellDef> Tratamiento </th>
+    <td mat-cell *matCellDef="let element"> {{element.sexo}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="edad">
+    <th mat-header-cell *matHeaderCellDef> Edad </th>
+    <td mat-cell *matCellDef="let element"> {{element.edad}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="cuota">
+    <th mat-header-cell *matHeaderCellDef> Aportación </th>
+    <td mat-cell *matCellDef="let element"> {{element.cuota}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
+</table> 
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+-->

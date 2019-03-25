@@ -1,0 +1,19 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.uno {float: left;
+    width: 100%;
+
+}
+.dos {float: left;
+    width: 50%;
+
+}
+.tres {float: left;
+    width: 50%;
+    margin-top: 1%;
+
+}
+
+.example-card{
+    margin-left:2%;
+}

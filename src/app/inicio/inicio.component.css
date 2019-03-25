@@ -1,0 +1,17 @@
+
+.example-card {
+  max-width: 100%;
+}
+
+.uno {float: left;
+  width: 100%;
+
+}
+.dos {float: left;
+  width: 50%;
+
+}
+.tres {float: left;
+  width: 50%;
+
+}
