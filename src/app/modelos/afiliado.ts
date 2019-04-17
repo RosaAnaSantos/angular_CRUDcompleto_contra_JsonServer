@@ -2,10 +2,10 @@ export interface Afiliado{
     id: number;
     nombre: string;
     apellidos:string;
+    edad:number;
     profesion:string;
     ideologia:string;
-    edad:number;
-    sexo:string;
+    tratamiento:string;
     cuota: number;
     status: string;
 }

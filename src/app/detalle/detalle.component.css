@@ -1,20 +1,61 @@
-table {
-    width: 100%;
-    margin-left:3%;
-    margin-right: 3%;
-    margin-top: 1%;
-  }
-  th, td{
-    text-align: left;  
-  }
-  h1{ width: 100%;
-    text-align-last: center;
-  }
-  .cero{
-    width: 100%;
-    margin-left:1%;
-    margin-right: 1%;
-  }
-  .botones{
-      align-content: center;
-  }
+
+table{
+  margin-top: 1%;
+  width: 100%;
+}
+th{
+  font-size: 1.1vw;
+  padding-bottom: 2%;
+  color: rgb(76, 79, 80);
+  text-align: left;
+}
+td{
+   font-size: 1.1vw;
+   text-align: left;
+}
+h1{
+  width: 100%;
+  text-align: center;
+  color: rgb(34, 172, 218);
+  font-size:2.1vw; 
+}
+
+.rojo{
+  width: 100%;
+  text-align: center;
+  color: rgb(218, 34, 34);
+  font-size:2.1vw;  width: 100%;
+}
+.buton_registro{
+  width: 90%;
+  height: 50px;;
+  margin-top: 1%;
+  margin-left: 5%;
+  background-color:white;
+  font-size: 2.2vw;
+  font-weight: bold;
+}
+
+.example-card{
+  width: 88%;
+  margin-left: 5%;
+
+}
+.buton1{
+width: 80%;
+  margin-top: 1%;
+  margin-left: 2%;
+  background-color:white;
+  color: rgb(34, 172, 218);
+}
+.buton2{
+  width: 80%;
+  margin-top: 1%;
+  margin-left: 2%;
+  background-color:white;
+  color: rgb(240, 51, 17);
+}
+.ok{
+  margin-left: 45%;
+  margin-top: 6px;;
+}

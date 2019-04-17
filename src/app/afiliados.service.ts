@@ -12,7 +12,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class AfiliadosService {
 
-  url = 'http://localhost:3000/afiliado';
+  url = 'http://localhost:3000/afiliados';
   constructor(private http:HttpClient) { }
 
   getAfiliados(): Observable<Afiliado[]> {
@@ -31,7 +31,7 @@ export class AfiliadosService {
 }
 
   borrarAfiliado(afiliado: Afiliado){
-  return this.http.delete(this.url+'/'+afiliado.id);
+  return this.http.delete(this.url +'/'+ afiliado.id);
 }
 
 }

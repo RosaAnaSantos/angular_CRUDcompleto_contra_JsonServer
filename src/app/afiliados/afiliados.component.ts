@@ -11,8 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class AfiliadosComponent implements OnInit {
   afiliados: Afiliado[];
-  displayedColumns: string[] = ['id', 'nombre', 'apellidos', 'sexo', 'cuota', 'status'];
-
+  displayedColumns: string[] = ['id', 'nombre', 'apellidos', 'edad', 'profesion', 'ideologia', 'cuota', 'status'];
   constructor(private afiliadosService: AfiliadosService) { }
 
   ngOnInit() {
@@ -23,4 +22,9 @@ export class AfiliadosComponent implements OnInit {
       }
     );
   } 
+/*
+  getTotalCost() {
+    return this.afiliados.map(t => t.cuota).reduce((acc, value) => acc + value, 0);
+  }
+  */
 }

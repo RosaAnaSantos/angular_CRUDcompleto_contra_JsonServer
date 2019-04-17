@@ -7,15 +7,15 @@ import { InicioComponent } from './inicio/inicio.component';
 import { AfiliadosComponent } from "./afiliados/AfiliadosComponent";
 import { DetalleComponent } from './detalle/detalle.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatIconModule, MatMenuModule, MatTableModule, MatCardModule, MatListModule }from '@angular/material';
+import { MatButtonModule, MatIconModule, MatMenuModule, MatTableModule, MatCardModule, MatListModule, MatSortModule, MatSelectModule }from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { RegistroComponent } from './registro/registro.component';
 import {MatFormFieldModule} from '@angular/material/form-field';  
-import {Component} from '@angular/core';
 import {MatRadioModule} from '@angular/material/radio';
 import { FormControl, Validators, FormsModule } from '@angular/forms';
-import { Cargo } from './modelos/cargo';
+import {ReactiveFormsModule} from '@angular/forms';
+import{ScrollingModule}from '@angular/cdk/scrolling';
 
  @NgModule({
   declarations: [
@@ -26,6 +26,7 @@ import { Cargo } from './modelos/cargo';
     RegistroComponent,
   ],
   imports: [
+    ReactiveFormsModule,FormsModule, 
     FormsModule,
     MatRadioModule,
     BrowserModule,
@@ -34,6 +35,7 @@ import { Cargo } from './modelos/cargo';
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
+    MatSelectModule,
     MatIconModule,
     MatMenuModule,
     MatTableModule,
@@ -41,7 +43,8 @@ import { Cargo } from './modelos/cargo';
     MatListModule,
     MatPaginatorModule,
     MatFormFieldModule,
- 
+    MatSortModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -49,12 +52,7 @@ import { Cargo } from './modelos/cargo';
 export class AppModule {
   animalControl = new FormControl('', [Validators.required]);
   selectFormControl = new FormControl('', Validators.required);
-  cargo: Cargo[] = [
-    {cargo: 'Presidente', cuota: '5000 euros'},
-    {cargo: 'Diputado', cuota: '3000 euros' },
-    {cargo: 'Secretario', cuota: '2000 euros'},
-    {cargo: 'Afiliado', cuota:'100 euros'},
-  ];
+  
 
  }
 

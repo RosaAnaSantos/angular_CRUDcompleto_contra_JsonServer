@@ -1,4 +1,4 @@
-
+<!--
 <div class="div">
  <mat-card class="example-card">
     <h1>Partido de Vagos de España</h1> 
@@ -27,19 +27,28 @@
       <input matInput  type="text" placeholder="Ideología" name="ideologia" [(ngModel)]='afiliado.ideologia' >
     </mat-form-field>
 
-    <mat-radio-group #radioGroup="matRadioGroup"  [(ngModel)]="selection" >
+    <mat-radio-group #radioGroup="matRadioGroup"  [[ngModel]]="opcionSeleccionado" >
         <mat-radio-button value="caballero" >Caballero</mat-radio-button>
         <mat-radio-button value="señora" >Señora</mat-radio-button>
     </mat-radio-group >
-<div>{{selection}}</div>
 
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Su cuota mensual es de ---" name='cuota' [(ngModel)]='afiliado.cuota'>
+    <input matInput placeholder="Indique su cuota mensual " name='cuota' [(ngModel)]='afiliado.cuota'>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Indique que cargo le gustaría ocupar y en que cartera" name='status'[(ngModel)]='afiliado.status'    ></textarea>
+    <mat-label>Indique el cargo que le gustaría </mat-label>
+    <mat-select disableRipple   [(ngModel)]="opcionSeleccionado">
+      <mat-option value="1">Diputado</mat-option>
+      <mat-option value="2">Senador</mat-option>
+      <mat-option value="3">Ministro</mat-option>
+      <mat-option value="4">Secretario</mat-option>
+      <mat-option value="5">Consejero</mat-option>
+      <mat-option value="6">Votante</mat-option>
+    </mat-select>
   </mat-form-field>
+  
+
 </form>
 <button mat-raised-button
         matTooltip="Info about the action"
@@ -55,3 +64,61 @@
 </mat-card>
 
 </div>
+-->
+<div class="div">
+  <mat-card class="example-card">
+     <h1>Partido de Vagos de España</h1> 
+     <h2>Documento de Afiliación</h2>
+  </mat-card>
+  <mat-card class="example-card"> 
+ <form class="example-form">
+   
+   <mat-form-field class="example-full-width">
+       <input matInput  type="text" placeholder="Nombre" name="nombre" [(ngModel)]='afiliado.nombre' required>
+   </mat-form-field>
+   <mat-form-field class="example-full-width">
+     <input matInput  type="text" placeholder="Apellidos" name="apellidos" [(ngModel)]='afiliado.apellidos' required>
+   </mat-form-field>
+   <mat-form-field class="example-full-width">
+       <input matInput  type="text" placeholder="Edad" name="edad" [(ngModel)]='afiliado.edad' required>
+   </mat-form-field>
+
+   <mat-form-field class="example-full-width">
+       <input matInput  type="text" placeholder="Profesión" name="profesion" [(ngModel)]='afiliado.profesion' >
+   </mat-form-field>
+
+   <mat-form-field class="example-full-width">
+       <input matInput  type="text" placeholder="Ideología" name="ideologia" [(ngModel)]='afiliado.ideologia' required>
+     </mat-form-field>
+
+     <mat-radio-group name="tratamiento" [(ngModel)]='afiliado.tratamiento'>
+        <mat-radio-button *ngFor="let sex of tipoSexo" name="opciones" [value]="sex"  style="margin: 10px">
+        {{sex}}
+        </mat-radio-button>
+      </mat-radio-group>
+    <p>{{afiliado.sexo}}</p>
+   <mat-form-field class="example-full-width">
+     <input matInput placeholder="Indique su cuota mensual" name='cuota' [(ngModel)]='afiliado.cuota' required>
+   </mat-form-field>
+
+<mat-form-field>
+    <mat-select placeholder="Cargo que le gustaría ocupar" [(ngModel)]='afiliado.status' name="cargo">
+      <mat-option *ngFor="let op of cargos" [value]="op.valor">
+        {{op.valor}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+ </form>
+ <button mat-raised-button 
+         matTooltip="Info about the action"
+         aria-label="Button that displays a tooltip when focused or hovered over" (click)="altaAfiliado(afiliado);">
+   ENVIAR
+ </button>
+ <button mat-raised-button
+         matTooltip="Info about the action"
+         aria-label="Button that displays a tooltip when focused or hovered over"  [routerLink]="['/afiliados']">
+   VOLVER
+ </button>
+ </mat-card>
+ </div>

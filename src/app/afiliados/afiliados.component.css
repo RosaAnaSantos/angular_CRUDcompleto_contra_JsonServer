@@ -1,17 +1,22 @@
 table {
-    width: 80%;
-    margin-left:10%;
-    margin-right: 10%;
+    width: 100%;
+    margin-left:2%;
+    margin-right: 1%;
     margin-top: 1%;
   }
   h1{ width: 100%;
     text-align-last: center;
   }
-  .cero{
-    width: 80%;
-    margin-left:10%;
-    margin-right: 10%;
-  }
+ 
   .margen{padding-left: 5%;
 
+  }
+  .container {
+    margin-left:3%;
+    margin-right:3%;
+    overflow:scroll;
+  }
+  .cabecera{
+    width: 90%;
+    margin-left: 5%;
   }
