@@ -23,15 +23,15 @@ export class RegistroComponent {
   ];
 
   cargos= [
-      {valor:'Ministro', muestraValor:'Sumar'},
-      {valor:'Secretario', muestraValor:'Restar'},
-      {valor:'Diputado', muestraValor:'Multiplicar'},
-      {valor:'Senador', muestraValor:'Dividir'},
-      {valor:'Presidente', muestraValor:'Sumar'},
-      {valor:'Administrador', muestraValor:'Restar'},
-      {valor:'Alcalde', muestraValor:'Multiplicar'},
-      {valor:'Concejal', muestraValor:'Dividir'},
-      {valor:'Votante', muestraValor:'Dividir'}
+      {valor:'Ministerios'},
+      {valor:'Secretarías'},
+      {valor:'Congreso'},
+      {valor:'Senado'},
+      {valor:'Presidencia'},
+      {valor:'Administración'},
+      {valor:'Alcaldía'},
+      {valor:'Concejalía'},
+      {valor:'Votante'}
     ];
   
 
@@ -43,13 +43,11 @@ export class RegistroComponent {
     this.afiliadosService.altaAfiliado(this.afiliado);
     this.afiliado = {id:null, nombre:'', apellidos:'', edad:null, profesion:'', ideologia:'',  tratamiento:'', cuota:null ,status:''};
     Swal.fire({
-      title: '¡Enhorabuena, ya eres del partido!',
-      animation: false,
-      customClass: {
-        popup: 'animated tada'
-      }
+      type: 'success',
+      title: '',
+      text: '¡Registrado correctamente',
+      footer: '<a href></a>'
     })
   }
 }
-
 

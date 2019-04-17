@@ -17,11 +17,35 @@ export class DetalleComponent implements OnInit {
   afiliados: Observable<Afiliado[]>;
   afiliado: Observable<Afiliado>;
   //@Input() dato:string; ---------------------------------pasar datos de padre a este hijo
+  hideBorrado:boolean=true;
   hideUpdate:boolean=false;
   hideMostrar:boolean=true;
+  hideActualizar:boolean=true;
+  hideTable:boolean=false;
+  
+  tipoSexo = [
+    'Señor',
+    'Señora',
+    'Don',
+    'Doña',
+    'Señorita',
+  ];
+
+  cargos= [
+      {valor:'Ministro'},
+      {valor:'Secretario'},
+      {valor:'Diputado'},
+      {valor:'Senador'},
+      {valor:'Presidente'},
+      {valor:'Administrador'},
+      {valor:'Alcalde'},
+      {valor:'Concejal'},
+      {valor:'Votante'}
+    ];
   constructor( private route: ActivatedRoute,
     private router: Router,
-    private servicio: AfiliadosService) { }
+    private servicio: AfiliadosService) { 
+    }
 
   ngOnInit() {
 
@@ -33,33 +57,60 @@ export class DetalleComponent implements OnInit {
       );
 
   }
-
-updateAfiliado(){
+editarAfiliado(){
+  this.hideActualizar=false;
+  this.hideTable=false;
   this.hideUpdate=true;
-  this.hideMostrar=false;
+}
+
+actualizarAfiliado(afiliado:Afiliado){
+  this.servicio.updateAfiliado(afiliado).subscribe(
+    () => {
+      this.afiliados = this.servicio.getAfiliados();
+      Swal.fire({
+        type: 'success',
+        title: '',
+        text: '¡Modificado correctamente!  ',
+        footer: '<a href></a>'
+      })
+    }
+  ); 
+  
+  Swal.fire({
+    type: 'error',
+    title: '',
+    text: '¡Error al modificar, no ha podido ser !  ',
+    footer: '<a href></a>'
+  })
 }
 
 deleteAfiliado(afiliado: Afiliado){
+  this.hideBorrado=false;
   this.hideUpdate=true;
   this.hideMostrar=false;
   this.servicio.borrarAfiliado(afiliado).subscribe(
   () => {
     this.afiliados = this.servicio.getAfiliados();
     Swal.fire({
-      type: 'error',
+      type: 'success',
       title: '',
       text: '¡Eliminado correctamente!  ',
       footer: '<a href></a>'
     })
 
   }
- 
- 
+
  );
+
+ Swal.fire({
+  type: 'error',
+  title: '',
+  text: '¡Error al eliminar, no ha podido ser !  ',
+  footer: '<a href></a>'
+})
 }
 }
 
 
 
 
-  
