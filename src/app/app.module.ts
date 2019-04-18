@@ -16,6 +16,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { FormControl, Validators, FormsModule } from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import{ScrollingModule}from '@angular/cdk/scrolling';
+import { CarnetpdfComponent } from './carnetpdf/carnetpdf.component';
 
  @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import{ScrollingModule}from '@angular/cdk/scrolling';
     AfiliadosComponent,
     DetalleComponent,
     RegistroComponent,
+    CarnetpdfComponent,
   ],
   imports: [
     ReactiveFormsModule,FormsModule, 

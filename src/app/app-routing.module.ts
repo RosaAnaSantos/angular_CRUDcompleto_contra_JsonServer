@@ -4,6 +4,7 @@ import { DetalleComponent } from './detalle/detalle.component';
 import { AfiliadosComponent } from "./afiliados/AfiliadosComponent";
 import { InicioComponent } from './inicio/inicio.component';
 import { RegistroComponent} from './registro/registro.component';
+import { CarnetpdfComponent} from './carnetpdf/carnetpdf.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,10 @@ const routes: Routes = [
     path: 'registro',
     component: RegistroComponent
   },
-  
+  {
+    path: 'carnet',
+    component: CarnetpdfComponent
+  },
 ];
 
 @NgModule({
