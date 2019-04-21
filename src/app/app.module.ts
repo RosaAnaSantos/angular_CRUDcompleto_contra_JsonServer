@@ -17,6 +17,7 @@ import { FormControl, Validators, FormsModule } from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import{ScrollingModule}from '@angular/cdk/scrolling';
 import { CarnetpdfComponent } from './carnetpdf/carnetpdf.component';
+import { EuroPipe } from './euro.pipe';
 
  @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { CarnetpdfComponent } from './carnetpdf/carnetpdf.component';
     DetalleComponent,
     RegistroComponent,
     CarnetpdfComponent,
+    EuroPipe,
   ],
   imports: [
     ReactiveFormsModule,FormsModule, 

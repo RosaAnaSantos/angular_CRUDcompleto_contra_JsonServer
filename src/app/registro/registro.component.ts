@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class RegistroComponent { 
   sexoSeleccionado:string;
-  afiliado: Afiliado = {id:null, dni:null, nombre:'', apellidos:'',edad:null, profesion:'', ideologia:'', tratamiento:'', cuota:null , status:'', pass:'', votos:null};  
+  afiliado: Afiliado = {id:null, dni:null, nombre:'', apellidos:'',edad:null, profesion:'', ideologia:'', tratamiento:'', cuota:null, status:'', pass:'', votos:null};  
  
   tipoSexo = [
     'Señor',

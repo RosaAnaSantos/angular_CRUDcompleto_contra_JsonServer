@@ -49,7 +49,7 @@
 
     <ng-container matColumnDef="cuota">
         <th class="margen" mat-header-cell *matHeaderCellDef> Aportación </th>
-        <td class="margen" mat-cell *matCellDef="let element"> {{element.cuota}} </td>
+        <td class="margen" mat-cell *matCellDef="let element"> {{element.cuota |euro}} </td>
     </ng-container>
 
     <ng-container matColumnDef="status">
