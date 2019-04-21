@@ -20,7 +20,7 @@
   }
   h1{width: 100%;
     text-align: center;
-    color: rgb(51, 35, 139);
+    color: rgb(34, 172, 218);
 
   }
   h2{width: 100%;
@@ -28,5 +28,19 @@
     color: darkgrey;
 
   }
+
+  .buton_enviar{
+    width: 120px;
+    height: 35px;
+    margin-top: 2%;
+  }
+  .buton_volver{
+    width: 120px;
+    height: 35px;
+    margin-top: 2%;
+    color: rgb(34, 172, 218);
+    margin-left: 1%;
+  }
+
   
   

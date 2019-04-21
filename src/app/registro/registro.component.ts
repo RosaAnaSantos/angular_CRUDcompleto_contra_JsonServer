@@ -9,10 +9,9 @@ import Swal from 'sweetalert2';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent {
-   
+export class RegistroComponent { 
   sexoSeleccionado:string;
-  afiliado: Afiliado = {id:null, nombre:'', apellidos:'',edad:null, profesion:'', ideologia:'', tratamiento:'', cuota:null , status:''};  
+  afiliado: Afiliado = {id:null, dni:null, nombre:'', apellidos:'',edad:null, profesion:'', ideologia:'', tratamiento:'', cuota:null , status:'', pass:'', votos:null};  
  
   tipoSexo = [
     'Señor',
@@ -35,13 +34,13 @@ export class RegistroComponent {
     ];
   
 
-  constructor(private afiliadosService: AfiliadosService) {
+  constructor(private afiliadosService: AfiliadosService) { 
  
   }
 
   altaAfiliado() {
     this.afiliadosService.altaAfiliado(this.afiliado);
-    this.afiliado = {id:null, nombre:'', apellidos:'', edad:null, profesion:'', ideologia:'',  tratamiento:'', cuota:null ,status:''};
+    this.afiliado = {id:null, dni:null, nombre:'', apellidos:'', edad:null, profesion:'', ideologia:'',  tratamiento:'', cuota:null ,status:'',pass:'', votos:null};
     Swal.fire({
       type: 'success',
       title: '',

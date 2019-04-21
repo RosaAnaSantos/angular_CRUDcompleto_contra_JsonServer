@@ -72,15 +72,19 @@
   </mat-card>
   <mat-card class="example-card"> 
  <form class="example-form">
-   
+
    <mat-form-field class="example-full-width">
-       <input matInput  type="text" placeholder="Nombre" name="nombre" [(ngModel)]='afiliado.nombre' required>
+      <input matInput  type="text" placeholder="Dni" name="nombre" [(ngModel)]='afiliado.dni' required>
+   </mat-form-field> 
+
+   <mat-form-field class="example-full-width">
+       <input matInput  type="text" placeholder="Nombre" name="nombre" [(ngModel)]='afiliado.nombre' >
    </mat-form-field>
    <mat-form-field class="example-full-width">
-     <input matInput  type="text" placeholder="Apellidos" name="apellidos" [(ngModel)]='afiliado.apellidos' required>
+     <input matInput  type="text" placeholder="Apellidos" name="apellidos" [(ngModel)]='afiliado.apellidos'>
    </mat-form-field>
    <mat-form-field class="example-full-width">
-       <input matInput  type="text" placeholder="Edad" name="edad" [(ngModel)]='afiliado.edad' required>
+       <input matInput  type="text" placeholder="Edad" name="edad" [(ngModel)]='afiliado.edad'>
    </mat-form-field>
 
    <mat-form-field class="example-full-width">
@@ -88,7 +92,7 @@
    </mat-form-field>
 
    <mat-form-field class="example-full-width">
-       <input matInput  type="text" placeholder="Ideología" name="ideologia" [(ngModel)]='afiliado.ideologia' required>
+       <input matInput  type="text" placeholder="Ideología" name="ideologia" [(ngModel)]='afiliado.ideologia'>
      </mat-form-field>
 
      <mat-radio-group name="tratamiento" [(ngModel)]='afiliado.tratamiento'>
@@ -102,23 +106,42 @@
    </mat-form-field>
 
 <mat-form-field>
-    <mat-select placeholder="Cargo que le gustaría ocupar" [(ngModel)]='afiliado.status' name="cargo">
+    <mat-select placeholder="Cargo que le gustaría ocupar" [(ngModel)]='afiliado.status' name="cargo" required>
       <mat-option *ngFor="let op of cargos" [value]="op.valor">
         {{op.valor}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
+  <mat-form-field class="example-full-width">
+      <input matInput  type="text" placeholder="Pass" name="pas" [(ngModel)]='afiliado.pass' required>
+  </mat-form-field>
+
  </form>
+
+
+
+ <button class="buton_enviar" (click)="altaAfiliado(afiliado);" *ngIf="afiliado.dni && afiliado.status && afiliado.cuota && afiliado.pass; else desactivado">ENVIAR</button>
+<ng-template #desactivado>
+  <button  class="buton_enviar"
+  disabled>ENVIAR</button>
+ </ng-template>
+ 
+ 
+
+ <!--
  <button mat-raised-button 
          matTooltip="Info about the action"
-         aria-label="Button that displays a tooltip when focused or hovered over" (click)="altaAfiliado(afiliado);" [routerLink]="['/carnet']">
+         aria-label="Button that displays a tooltip when focused or hovered over" (click)="altaAfiliado(afiliado);"  [routerLink]="['/carnet', afiliado.id]">
    ENVIAR
  </button>
- <button mat-raised-button
+
+-->
+
+ <button class="buton_volver" mat-raised-button
          matTooltip="Info about the action"
          aria-label="Button that displays a tooltip when focused or hovered over"  [routerLink]="['/afiliados']">
-   VOLVER
+         <mat-icon class="icon"> reply </mat-icon>
  </button>
  </mat-card>
  </div>

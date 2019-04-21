@@ -1,5 +1,6 @@
 export interface Afiliado{
     id: number;
+    dni:number;
     nombre: string;
     apellidos:string;
     edad:number;
@@ -8,6 +9,8 @@ export interface Afiliado{
     tratamiento:string;
     cuota: number;
     status: string;
+    pass:string;
+    votos:number;
 }
 
 
