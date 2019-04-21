@@ -22,6 +22,7 @@ export class AfiliadosComponent implements OnInit {
       this.afiliados = afiliados;
     });
   }
-
-   
+  setColor(valor:number){
+    return valor >=18  ? 'green' :'red';
+  }
 }

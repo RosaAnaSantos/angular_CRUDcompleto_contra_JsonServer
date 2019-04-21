@@ -37,6 +37,7 @@ export class RegistroComponent {
   constructor(private afiliadosService: AfiliadosService) { 
  
   }
+ 
 
   altaAfiliado() {
     this.afiliadosService.altaAfiliado(this.afiliado);

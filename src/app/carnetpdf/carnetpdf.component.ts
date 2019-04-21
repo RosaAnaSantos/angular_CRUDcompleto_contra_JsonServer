@@ -7,7 +7,7 @@ import { switchMap } from 'rxjs/operators';
 import { AfiliadosService } from '../afiliados.service';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { RegistroComponent } from '../registro/registro.component';
-import { AfiliadosComponent } from '../afiliados/afiliados.component';
+import { AfiliadosComponent } from '../afiliados/AfiliadosComponent';
 @Component({
   selector: 'app-carnetpdf',
   templateUrl: './carnetpdf.component.html',
@@ -35,18 +35,17 @@ export class CarnetpdfComponent implements OnInit {
   public captureScreen()  
   {  
     var data = document.getElementById('contentToConvert');  
-    html2canvas(data).then(canvas => {  
-      // Few necessary setting options  
+    html2canvas(data).then(canvas => {   
       var imgWidth = 208;   
       var pageHeight = 295;    
       var imgHeight = canvas.height * imgWidth / canvas.width;  
       var heightLeft = imgHeight;  
   
       const contentDataURL = canvas.toDataURL('image/png')  
-      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+      let pdf = new jspdf('p', 'mm', 'a4'); // A4 tamaño hoja del  PDF  
       var position = 0;  
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
-      pdf.save('SuCarnet.pdf'); // Generated PDF   
+      pdf.save('SuCarnet.pdf'); // Genera el PDF   
     });  
   }  
 
