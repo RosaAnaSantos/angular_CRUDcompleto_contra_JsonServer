@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class DetalleComponent implements OnInit {
  
-  displayedColumns: string[] = ['id', 'nombre', 'apellidos', 'edad', 'profesion', 'ideologia', 'tratamiento', 'cuota', 'status'];
+  displayedColumns: string[] = ['id', 'Dni', 'nombre', 'apellidos', 'edad', 'profesion', 'ideologia', 'tratamiento', 'cuota', 'status', 'Email', 'Pass'];
   afiliados: Observable<Afiliado[]>;
   afiliado: Observable<Afiliado>;
   //@Input() dato:string; ---------------------------------pasar datos de padre a este hijo
@@ -22,6 +22,7 @@ export class DetalleComponent implements OnInit {
   hideMostrar:boolean=true;
   hideActualizar:boolean=true;
   hideTable:boolean=false;
+  hideFotoActualizar:boolean=false;
   
   tipoSexo = [
     'Señor',
@@ -29,18 +30,20 @@ export class DetalleComponent implements OnInit {
     'Don',
     'Doña',
     'Señorita',
+    'Joven',
+    'Jovencita'
   ];
 
   cargos= [
-      {valor:'Ministro'},
-      {valor:'Secretario'},
-      {valor:'Diputado'},
-      {valor:'Senador'},
-      {valor:'Presidente'},
-      {valor:'Administrador'},
-      {valor:'Alcalde'},
-      {valor:'Concejal'},
-      {valor:'Votante'}
+    {valor:'Ministerios'},
+    {valor:'Secretarías'},
+    {valor:'Congreso'},
+    {valor:'Senado'},
+    {valor:'Presidencia'},
+    {valor:'Administración'},
+    {valor:'Alcaldía'},
+    {valor:'Concejalía'},
+    {valor:'Votante'}
     ];
   constructor( private route: ActivatedRoute,
     private router: Router,
@@ -61,6 +64,7 @@ editarAfiliado(){
   this.hideActualizar=false;
   this.hideTable=false;
   this.hideUpdate=true;
+  this.hideFotoActualizar=false;
 }
 
 actualizarAfiliado(afiliado:Afiliado){
@@ -82,35 +86,50 @@ actualizarAfiliado(afiliado:Afiliado){
     text: '¡Error al modificar, no ha podido ser !  ',
     footer: '<a href></a>'
   })
+  this.hideActualizar=false;
+
 }
+
 
 deleteAfiliado(afiliado: Afiliado){
   this.hideBorrado=false;
   this.hideUpdate=true;
   this.hideMostrar=false;
-  this.servicio.borrarAfiliado(afiliado).subscribe(
-  () => {
-    this.afiliados = this.servicio.getAfiliados();
-    Swal.fire({
-      type: 'success',
-      title: '',
-      text: '¡Eliminado correctamente!  ',
-      footer: '<a href></a>'
-    })
-
-  }
-
- );
+  this.hideFotoActualizar=false;
 
  Swal.fire({
-  type: 'error',
-  title: '',
-  text: '¡Error al eliminar, no ha podido ser !  ',
-  footer: '<a href></a>'
-})
+  title: '¿Está seguro de eliminar este usuario?',
+  text: "Esta operación no se puede revertir",
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: '!Sí, eliminar!'
+  }).then((result) => {
+  if (result.value) {
+
+    this.servicio.borrarAfiliado(afiliado).subscribe(
+      () => {
+        this.afiliados = this.servicio.getAfiliados();
+        Swal.fire({
+          type: 'success',
+          title: '',
+          text: '¡Eliminado correctamente!  ',
+          footer: '<a href></a>'
+        })
+    
+      }
+    
+     );
+    
+     Swal.fire({
+      type: 'error',
+      title: '',
+      text: '¡Error al eliminar, no ha podido ser !  ',
+      footer: '<a href></a>'
+     }) 
+    }
+  })
+ }
 }
-}
-
-
-
-
+  

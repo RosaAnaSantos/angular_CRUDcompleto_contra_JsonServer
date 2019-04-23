@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef ,ViewChild, Input } from '@angular/core';
+import { Component, OnInit,InputDecorator, ElementRef ,ViewChild, Input } from '@angular/core';
 import * as jspdf from 'jspdf';    
 import html2canvas from 'html2canvas'; 
 import { Afiliado } from '../modelos/afiliado';
@@ -14,6 +14,8 @@ import { AfiliadosComponent } from '../afiliados/AfiliadosComponent';
   styleUrls: ['./carnetpdf.component.css']
 })
 export class CarnetpdfComponent implements OnInit {
+// @Input() aviso:string;
+  today:any = new Date();
   afiliados: Observable<Afiliado[]>;
   afiliado: Observable<Afiliado>;
 

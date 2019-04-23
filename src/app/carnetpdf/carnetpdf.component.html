@@ -1,45 +1,20 @@
 
 
- 
-    <mat-card> 
-      
-      <table  id="contentToConvert">
-          <tr>  
-              <th colspam="2"><img src="assets/antonio.png"></th>  
-            </tr>   
-
-          <tr>  
-            <th colspam="2"><h1>Antonio el Parao</h1></th>  
-          </tr> 
-          <tr>  
-              <th colspam="2">
-                <h2>Presidente y único afiliado del partido de Vagos de España<br/>
-                    tiene el honor de nombrar aspirante a 
-                </h2>
-              </th>  
-          </tr> 
-
-          <tr>  
-            <th colspam="2">
-              <h1>---{{afiliado.status}}-----</h1>
-            </th>    
-          </tr>  
-          <tr>  
-              <th colspam="2">
-                <h2>D/Dñª {{(afiliado|async)?.nombre}}  {{(afiliado|async)?.apellidos}}</h2>
-              </th>     
-          </tr> 
-            
-        </table>  
 
         
-    </mat-card>  
- 
+        <div class="cuadro">
+            <div class="text">
+                 <p>  
+                     D/Dñª {{afiliado.nombre}} {{afiliado.apellidos}}----------
+                 </p>
+                 <p>
+                    Jaén, {{today |date: 'dd/MM/yyyy'}}  
+                 </p>
+            </div>
+         
+        </div> 
+        
       <mat-card>  
-        
-        <div class="alert alert-info">  
-            <strong></strong>  
-        </div>  
         
           <input type="button" value="DESCARGUE AQUI SU CARNET DE AFILIADO AL PARTIDO DE VAGOS Y DE ASPIRANTE A CARGOS" (click)="captureScreen()"/>  
         

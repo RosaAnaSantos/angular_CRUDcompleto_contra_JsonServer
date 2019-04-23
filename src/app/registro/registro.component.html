@@ -1,71 +1,5 @@
-<!--
-<div class="div">
- <mat-card class="example-card">
-    <h1>Partido de Vagos de España</h1> 
-    <h2>Documento de Afiliación</h2>
- </mat-card>
- <mat-card class="example-card"> 
-<form class="example-form">
-  
-  <mat-form-field class="example-full-width">
-      <input matInput  type="text" placeholder="Nombre" name="nombre" [(ngModel)]='afiliado.nombre' >
-  </mat-form-field>
 
-  <mat-form-field class="example-full-width">
-    <input matInput  type="text" placeholder="Apellidos" name="apellidos" [(ngModel)]='afiliado.apellidos' >
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-      <input matInput  type="text" placeholder="Edad" name="edad" [(ngModel)]='afiliado.edad' >
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-      <input matInput  type="text" placeholder="Profesión" name="profesion" [(ngModel)]='afiliado.profesion' >
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-      <input matInput  type="text" placeholder="Ideología" name="ideologia" [(ngModel)]='afiliado.ideologia' >
-    </mat-form-field>
-
-    <mat-radio-group #radioGroup="matRadioGroup"  [[ngModel]]="opcionSeleccionado" >
-        <mat-radio-button value="caballero" >Caballero</mat-radio-button>
-        <mat-radio-button value="señora" >Señora</mat-radio-button>
-    </mat-radio-group >
-
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Indique su cuota mensual " name='cuota' [(ngModel)]='afiliado.cuota'>
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Indique el cargo que le gustaría </mat-label>
-    <mat-select disableRipple   [(ngModel)]="opcionSeleccionado">
-      <mat-option value="1">Diputado</mat-option>
-      <mat-option value="2">Senador</mat-option>
-      <mat-option value="3">Ministro</mat-option>
-      <mat-option value="4">Secretario</mat-option>
-      <mat-option value="5">Consejero</mat-option>
-      <mat-option value="6">Votante</mat-option>
-    </mat-select>
-  </mat-form-field>
-  
-
-</form>
-<button mat-raised-button
-        matTooltip="Info about the action"
-        aria-label="Button that displays a tooltip when focused or hovered over" (click)="altaAfiliado();">
-  ENVIAR
-</button>
-
-<button mat-raised-button
-        matTooltip="Info about the action"
-        aria-label="Button that displays a tooltip when focused or hovered over">
-  LIMPIAR
-</button>
-</mat-card>
-
-</div>
--->
-<div class="div">
+<div [hidden]="hideRegistro" class="divide" >
   <mat-card class="example-card">
      <h1>Partido de Vagos de España</h1> 
      <h2>Documento de Afiliación</h2>
@@ -114,6 +48,10 @@
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
+      <input matInput  type="text" placeholder="Email" name="email" [(ngModel)]='afiliado.email'>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
       <input matInput  type="text" placeholder="Pass" name="pas" [(ngModel)]='afiliado.pass' required>
   </mat-form-field>
 
@@ -121,13 +59,21 @@
 
 
 
- <button class="buton_enviar" (click)="altaAfiliado(afiliado);" *ngIf="afiliado.dni && afiliado.status && afiliado.cuota && afiliado.pass; else desactivado">ENVIAR</button>
+ <button class="buton_enviar" (click)="altaAfiliado(afiliado);"  *ngIf="afiliado.dni && afiliado.status && afiliado.cuota && afiliado.pass; else desactivado"  >ENVIAR</button>
 <ng-template #desactivado>
   <button  class="buton_enviar"
   disabled>ENVIAR</button>
  </ng-template>
  
- 
+
+
+ <button class="buton_volver" mat-raised-button
+         matTooltip="Info about the action"
+         aria-label="Button that displays a tooltip when focused or hovered over"  [routerLink]="['/afiliados']">
+         <mat-icon class="icon"> reply </mat-icon>
+ </button>
+ </mat-card>
+ </div>
 
  <!--
  <button mat-raised-button 
@@ -136,12 +82,11 @@
    ENVIAR
  </button>
 
--->
 
- <button class="buton_volver" mat-raised-button
-         matTooltip="Info about the action"
-         aria-label="Button that displays a tooltip when focused or hovered over"  [routerLink]="['/afiliados']">
-         <mat-icon class="icon"> reply </mat-icon>
- </button>
- </mat-card>
+<div [hidden]="hideCarnet">
+  <app-carnetpdf [aviso]="valorPadre"></app-carnetpdf>
+</div>
+-->
+ <div [hidden]="hideCarnet" class="divide">
+      <app-carnetpdf></app-carnetpdf>
  </div>

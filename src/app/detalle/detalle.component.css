@@ -1,6 +1,5 @@
 
 table{
-  margin-top: 1%;
   width: 100%;
 }
 th{
@@ -37,12 +36,13 @@ h1{
 }
 
 .example-card{
-  width: 88%;
-  margin-left: 5%;
+  width: 100%;
+  margin: 1%;
+  
 
 }
 .buton1{
-width: 80%;
+  width: 80%;
   margin-top: 1%;
   margin-left: 2%;
   background-color:white;
@@ -59,7 +59,8 @@ width: 80%;
 .ok{
   margin-left: 45%;
   margin-top: 6px;
-}.example-form {
+}
+.example-form {
   min-width: 150px;
   max-width: 90%;
   width: 100%;
@@ -90,4 +91,10 @@ h2{width: 100%;
 .volver{
   margin-left: 50%;
   margin-top: 2%;
+}
+.border{
+  margin-right: 5%;
+}
+form{
+  margin-left: 2%;
 }

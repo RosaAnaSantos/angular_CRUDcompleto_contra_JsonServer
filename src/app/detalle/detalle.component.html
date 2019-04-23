@@ -1,214 +1,203 @@
-<!--
-<mat-list role="list" *ngIf="afiliado | async as afiliado">
-    <mat-list-item role="listitem">Numero Afiliado: {{afiliado.id}}</mat-list-item>
-    <mat-list-item role="listitem">Nombre: {{afiliado.nombre}}</mat-list-item>
-    <mat-list-item role="listitem">Apellidos: {{afiliado.apellidos}}</mat-list-item>
-    <mat-list-item role="listitem">Profesión: {{afiliado.profesion}}</mat-list-item>
-    <mat-list-item role="listitem">Ideología: {{afiliado.ideologia}}</mat-list-item>
-    <mat-list-item role="listitem">sexo: {{afiliado.sexo}}</mat-list-item>
-    <mat-list-item role="listitem">Cuota: {{afiliado.cuota}}</mat-list-item>
-    <mat-list-item role="listitem">Cargo: {{afiliado.status}}</mat-list-item>
-  </mat-list>
-
-  <button mat-flat-button color="warn" (click)="atras()">Atrás</button>
-  <button mat-button (click)="atras()" >Atrás</button>
--->
-
-
-    <mat-card class="example-card">
-     
-        <h1 [hidden]="hideUpdate" >Detalle de afiliado al partido</h1> 
-        <h1 class="rojo" [hidden]="hideMostrar" >Este afiliado se acaba de eliminar</h1> 
-    </mat-card>
+<div class="border">
+ <mat-card class="example-card">
+    <h1 [hidden]="hideUpdate" >Detalle de afiliado al partido</h1> 
+    <h1 class="rojo" [hidden]="hideMostrar" >Este afiliado se acaba de eliminar</h1> 
+ </mat-card>
+</div> 
+<div class="border">
+  <mat-card class="example-card">
+      <table  *ngIf="afiliado | async as afiliado" border="0.5" > 
+        <tr>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Profesión</th>
+          <th>Ideología</th>
+          <th>Cuota</th>
+          <th>Status</th>
+          <th>Pass</th>
+          <th></th>
+          <th></th>
+        </tr>
+ 
   
+        <tr>
+          <td>{{afiliado.nombre}}</td>
+          <td>{{afiliado.apellidos}}</td>
+          <td>{{afiliado.profesion}}</td>
+          <td>{{afiliado.ideologia}}</td>
+          <td>{{afiliado.cuota}}</td>
+          <td>{{afiliado.status}}</td>
+          <td>{{afiliado.pass}}</td>
+          <td>{{afiliado.votos}}</td>
 
-      <mat-card class="example-card">
+          <td>
+            <button  [hidden]="hideUpdate" class="buton1" (click)="editarAfiliado(); " >
+                 <mat-icon> edit</mat-icon>
+            </button>
+          </td>
 
-          <table  *ngIf="afiliado | async as afiliado" border="0.2" > 
-          
-            <tr>
-              <th>Nombre</th>
-              <th>Apellidos</th>
-              <th>Profesión</th>
-              <th>Ideología</th>
-              <th>Edad</th>
-              <th>Trato</th>
-              <th>Cuota</th>
-              <th>Status</th>
-              <th></th>
-              <th></th>
-            </tr>
-     
-      
-            <tr> 
-              <td>{{afiliado.nombre}}</td>
-              <td>{{afiliado.apellidos}}</td>
-              <td>{{afiliado.profesion}}</td>
-              <td>{{afiliado.ideologia}}</td>
-              <td>{{afiliado.edad}}</td>
-              <td>{{afiliado.tratamiento}}</td>
-              <td>{{afiliado.cuota}}</td>
-              <td>{{afiliado.status}}</td>
-              <td>
-                <button  [hidden]="hideUpdate" class="buton1" (click)="editarAfiliado(); " >
-                     <mat-icon> edit</mat-icon>
-                </button>
-              </td>
-              <td>
-                <button  [hidden]="hideUpdate" class="buton2" (click)="deleteAfiliado(afiliado)" >
-                   <mat-icon> delete_sweep</mat-icon>
-                </button>
-              </td>
-            </tr>
-          </table>
-        </mat-card>
-        <div [hidden]="hideBorrado">
-          <button mat-raised-button class="volver"
-           matTooltip="Info about the action"
-           aria-label="Button that displays a tooltip when focused or hovered over"  [routerLink]="['/afiliados']">
-           VOLVER
-           </button>
-        </div>
-  <div  [hidden]="hideActualizar"  >
-        <h1  >Actualizar afiliado</h1> 
-    <mat-card class="example-card">
-      <form   *ngIf="afiliado | async as afiliado" class="example-form">
-   
-            <mat-form-field class="example-full-width">
-                <input matInput  type="text" placeholder="Nombre" name="nombre" [(ngModel)]='afiliado.nombre' required>
-            </mat-form-field>
+          <td>
+            <button  [hidden]="hideUpdate" class="buton2" (click)="deleteAfiliado(afiliado)" >
+               <mat-icon> delete_sweep</mat-icon>
+            </button>
+          </td>
 
-            <mat-form-field class="example-full-width">
-              <input matInput  type="text" placeholder="Apellidos" name="apellidos" [(ngModel)]='afiliado.apellidos' required>
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-                <input matInput  type="text" placeholder="Edad" name="edad" [(ngModel)]='afiliado.edad' required>
-            </mat-form-field>
-         
-            <mat-form-field class="example-full-width">
-                <input matInput  type="text" placeholder="Profesión" name="profesion" [(ngModel)]='afiliado.profesion' >
-            </mat-form-field>
-         
-            <mat-form-field class="example-full-width">
-                <input matInput  type="text" placeholder="Ideología" name="ideologia" [(ngModel)]='afiliado.ideologia' required>
-            </mat-form-field>
-             
-            <mat-radio-group name="tratamiento" [(ngModel)]='afiliado.tratamiento'>
-                 <mat-radio-button *ngFor="let sex of tipoSexo" name="opciones" [value]="sex"  style="margin: 10px">
-                 {{sex}}
-                 </mat-radio-button>
-             </mat-radio-group>
-             
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Indique su cuota mensual" name='cuota' [(ngModel)]='afiliado.cuota' required>
-            </mat-form-field>
-           
-         <mat-form-field>
-             <mat-select placeholder="Cargo que le gustaría ocupar" [(ngModel)]='afiliado.status' name="cargo">
-               <mat-option *ngFor="let op of cargos" [value]="op.valor">
-                 {{op.valor}}
-               </mat-option>
-             </mat-select>
-         </mat-form-field>
+        </tr>
+      </table>
+   </mat-card> 
+</div>        
+  
+<div [hidden]="hideBorrado">
+      <button mat-raised-button class="volver"
+       matTooltip="Info about the action"
+       aria-label="Button that displays a tooltip when focused or hovered over"  [routerLink]="['/afiliados']">
+       VOLVER
+       </button>
+</div>
+<div  [hidden]="hideActualizar"> 
+   <h1  >Actualizar afiliado</h1> 
+   <mat-card class="example-card">
+    <form *ngIf="afiliado | async as afiliado" class="example-form">
         
-     </form>
-          <button mat-raised-button 
-                  matTooltip="Info about the action"
-                  aria-label="Button that displays a tooltip when focused or hovered over" (click)="actualizarAfiliado(afiliado);" >
-            ACTUALIZAR
-          </button>
-          <button mat-raised-button
-                  matTooltip="Info about the action"
-                  aria-label="Button that displays a tooltip when focused or hovered over"  [routerLink]="['/afiliados']">
-            CANCELAR
-          </button>
-   </mat-card>
-    </div>      
+        <mat-form-field class="example-full-width">
+            <input matInput  type="text" placeholder="Dni" name="dni" [(ngModel)]='afiliado.dni' required>
+        </mat-form-field>
 
+        <mat-form-field class="example-full-width">
+            <input matInput  type="text" placeholder="Nombre" name="nombre" [(ngModel)]='afiliado.nombre' required>
+        </mat-form-field>
 
+        <mat-form-field class="example-full-width">
+          <input matInput  type="text" placeholder="Apellidos" name="apellidos" [(ngModel)]='afiliado.apellidos' required>
+        </mat-form-field>
 
+        <mat-form-field class="example-full-width">
+            <input matInput  type="text" placeholder="Edad" name="edad" [(ngModel)]='afiliado.edad' required>
+        </mat-form-field>
+     
+        <mat-form-field class="example-full-width">
+            <input matInput  type="text" placeholder="Profesión" name="profesion" [(ngModel)]='afiliado.profesion' >
+        </mat-form-field>
+     
+        <mat-form-field class="example-full-width">
+            <input matInput  type="text" placeholder="Ideología" name="ideologia" [(ngModel)]='afiliado.ideologia' required>
+        </mat-form-field>
+       
+        <mat-radio-group name="tratamiento" [(ngModel)]='afiliado.tratamiento'>
+             <mat-radio-button *ngFor="let sex of tipoSexo" name="opciones" [value]="sex"  style="margin: 10px">
+             {{sex}}
+             </mat-radio-button>
+         </mat-radio-group>
+         
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Indique su cuota mensual" name='cuota' [(ngModel)]='afiliado.cuota' required>
+        </mat-form-field>
+       
+     <mat-form-field>
+         <mat-select placeholder="Cargo que le gustaría ocupar" [(ngModel)]='afiliado.status' name="cargo">
+           <mat-option *ngFor="let op of cargos" [value]="op.valor">
+             {{op.valor}}
+           </mat-option>
+         </mat-select>
+     </mat-form-field>
 
-     <!--a partir de aquí se conemta-->
+     <mat-form-field class="example-full-width">
+         <input matInput  type="text" placeholder="Email" name="email" [(ngModel)]='afiliado.email'>
+     </mat-form-field>
 
-  
-  
- <div class="container">
-  
-   <div class="panel "> <h2>Modificar Afiliado</h2></div>
-  <form   *ngIf="afiliado | async as afiliado">
-       <div class="form-group row">
-           <label for="id" class="col-sm-2 col-form-label">ID:</label>
-           <div class="col-sm-10">
-              <input id="id" type="text" disabled class="form-control"name="id" [(ngModel)]="afiliado.id" />
-           </div>
-        </div>
-        <div class="form-group row">
-             <label for="isbn" class="col-sm-2 col-form-label">Nombre:</label>
-             <div class="col-sm-10">
-                 <input  type="text" class="form-control" name="nombre" [(ngModel)]="afiliado.nombre" />
-             </div>
-         </div>                              
-         <div class="form-group row">
-              <label for="apellidos" class="col-sm-2 col-form-label">Apellidos:</label>
-              <div class="col-sm-10">                              
-                 <input type="text"  class="form-control" name="apellidos" [(ngModel)]="afiliado.apellidos" />
-              </div>
-         </div>                  
-         <div class="form-group row">
-              <label for="profesion" class="col-sm-2 col-form-label">Profesion:</label>
-              <div class="col-sm-10">
-                  <input type="text"  class="form-control" name="profesion" [(ngModel)]="afiliado.profesion" />
-              </div>
-         </div>                                
-         <div class="form-group row">
-              <label for="ideologia" class="col-sm-2 col-form-label">Ideologia:</label>
-              <div class="col-sm-10">                              
-                 <input type="text"  class="form-control" name="ideologia" [(ngModel)]="afiliado.ideologia" />
-              </div>
-         </div>                                    
-         <div class="form-group row">
-              <label for="edad" class="col-sm-2 col-form-label">Edad:</label>
-                <div class="col-sm-10">  
-                  <input type="text"  class="form-control" name="edad" [(ngModel)]="afiliado.edad" />
-                </div>
-         </div>                                                            
-         <div class="form-group row">
-              <label for="tratamiento" class="col-sm-2 col-form-label">Tratamiento:</label>
-                <div class="col-sm-10">
-                  <input type="text"  class="form-control" name="tratamiento" [(ngModel)]="afiliado.tratamiento" />
-                </div>
-        </div>
-        <div class="form-group row">
-              <label for="cuota" class="col-sm-2 col-form-label">Cuota:</label>
-                <div class="col-sm-10">
-                  <input type="text"  class="form-control" name="cuota" [(ngModel)]="afiliado.cuota" />
-                </div>
-        </div>
-        <div class="form-group row">
-              <label for="status" class="col-sm-2 col-form-label">Status:</label>
-                <div class="col-sm-10">
-                  <input type="text"  class="form-control" name="status" [(ngModel)]="afiliado.status" />
-                </div>
-        </div>
-         <p>
-            <button type="button"
-                         class="btn btn-primary"
-                         (click)="actualizarAfiliado(afiliado)">GUARDAR</button>
-            <button type="button"
-                         class="btn btn-warning"
-                         (click)="cancelar()">CANCELAR</button>
-          </p>
-         </form>
-    </div>
-    
-    
+     <mat-form-field class="example-full-width">
+         <input matInput  type="text" placeholder="Pass" name="pass" [(ngModel)]='afiliado.pass'>
+     </mat-form-field>
 
-
-
-
-
-
-   
-   
+     <p>
+       <button mat-raised-button 
+              matTooltip="Info about the action"
+              aria-label="Button that displays a tooltip when focused or hovered over" (click)="actualizarAfiliado(afiliado);" >
+        ACTUALIZAR
+       </button>
+       <button mat-raised-button
+              matTooltip="Info about the action"
+              aria-label="Button that displays a tooltip when focused or hovered over"  [routerLink]="['/afiliados']">
+        VOLVER
+       </button>
+    </p>
+ </form>
       
+</mat-card>
+</div>  
+
+<div [hidden]="hideFotoActualizar" class="border">
+  <mat-card class="example-card">
+    <img mat-card-image src="assets/index.jpg" alt="">
+  </mat-card>
+</div>
+ <!--a partir de aquí se comenta es bootstrap y funciona bien --no borrar--
+<div class="container">
+
+<div class="panel "> <h2>Modificar Afiliado</h2></div>
+<form   *ngIf="afiliado | async as afiliado">
+   <div class="form-group row">
+       <label for="id" class="col-sm-2 col-form-label">ID:</label>
+       <div class="col-sm-10">
+          <input id="id" type="text" disabled class="form-control"name="id" [(ngModel)]="afiliado.id" />
+       </div>
+    </div>
+    <div class="form-group row">
+         <label for="isbn" class="col-sm-2 col-form-label">Nombre:</label>
+         <div class="col-sm-10">
+             <input  type="text" class="form-control" name="nombre" [(ngModel)]="afiliado.nombre" />
+         </div>
+     </div>                              
+     <div class="form-group row">
+          <label for="apellidos" class="col-sm-2 col-form-label">Apellidos:</label>
+          <div class="col-sm-10">                              
+             <input type="text"  class="form-control" name="apellidos" [(ngModel)]="afiliado.apellidos" />
+          </div>
+     </div>                  
+     <div class="form-group row">
+          <label for="profesion" class="col-sm-2 col-form-label">Profesion:</label>
+          <div class="col-sm-10">
+              <input type="text"  class="form-control" name="profesion" [(ngModel)]="afiliado.profesion" />
+          </div>
+     </div>                                
+     <div class="form-group row">
+          <label for="ideologia" class="col-sm-2 col-form-label">Ideologia:</label>
+          <div class="col-sm-10">                              
+             <input type="text"  class="form-control" name="ideologia" [(ngModel)]="afiliado.ideologia" />
+          </div>
+     </div>                                    
+     <div class="form-group row">
+          <label for="edad" class="col-sm-2 col-form-label">Edad:</label>
+            <div class="col-sm-10">  
+              <input type="text"  class="form-control" name="edad" [(ngModel)]="afiliado.edad" />
+            </div>
+     </div>                                                            
+     <div class="form-group row">
+          <label for="tratamiento" class="col-sm-2 col-form-label">Tratamiento:</label>
+            <div class="col-sm-10">
+              <input type="text"  class="form-control" name="tratamiento" [(ngModel)]="afiliado.tratamiento" />
+            </div>
+    </div>
+    <div class="form-group row">
+          <label for="cuota" class="col-sm-2 col-form-label">Cuota:</label>
+            <div class="col-sm-10">
+              <input type="text"  class="form-control" name="cuota" [(ngModel)]="afiliado.cuota" />
+            </div>
+    </div>
+    <div class="form-group row">
+          <label for="status" class="col-sm-2 col-form-label">Status:</label>
+            <div class="col-sm-10">
+              <input type="text"  class="form-control" name="status" [(ngModel)]="afiliado.status" />
+            </div>
+    </div>
+     <p>
+        <button type="button"
+                     class="btn btn-primary"
+                     (click)="actualizarAfiliado(afiliado)">GUARDAR</button>
+        <button type="button"
+                     class="btn btn-warning"
+                     (click)="cancelar()">CANCELAR</button>
+      </p>
+     </form>
+</div>
+-->

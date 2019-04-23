@@ -12,9 +12,10 @@ import {DataSource} from '@angular/cdk/collections';
 export class AfiliadosComponent implements OnInit {
   @ViewChild(MatPaginator) paginator:MatPaginator;
   @ViewChild(MatSort) sort:MatSort;
+  hoy=new Date();
   afiliados: Afiliado[];
   afiliado:Observable<Afiliado[]>;
-  displayedColumns: string[] = ['id', 'nombre', 'apellidos', 'edad','profesion', 'ideologia', 'tratamiento', 'cuota', 'status'];
+  displayedColumns: string[] = ['id', 'dni', 'nombre', 'apellidos', 'edad','profesion', 'ideologia', 'tratamiento', 'cuota', 'status','email', 'pass', 'votos'];
   constructor(private afiliadosService: AfiliadosService) { }
   ngOnInit() {
     const obsAfiliados: Observable<Afiliado[]> = this.afiliadosService.getAfiliados();
@@ -23,6 +24,6 @@ export class AfiliadosComponent implements OnInit {
     });
   }
   setColor(valor:number){
-    return valor >=18  ? 'green' :'red';
+    return valor >=18  ? '#515A5A' :'red';
   }
 }

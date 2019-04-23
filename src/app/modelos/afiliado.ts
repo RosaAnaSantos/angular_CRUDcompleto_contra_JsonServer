@@ -9,6 +9,7 @@ export interface Afiliado{
     tratamiento:string;
     cuota: number;
     status: string;
+    email:string;
     pass:string;
     votos:number;
 }
