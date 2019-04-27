@@ -1,22 +1,48 @@
 
 
+<mat-card class="example-card">
+    <table id="contentToConvert">
+        <tr>  
+            <td colspam="2"><img src="assets/carnet_vago.jpg"></td>  
+        </tr>   
 
+        <tr>  
+            <td colspam="2"class="marg"> D/Dñª <strong>{{afiliado.nombre}} {{afiliado.apellidos}}</strong> </td> 
+              
+        </tr> 
+        <tr>  
+          <td colspam="2" class="marg"> Como aspirante a <strong>{{afiliado.status}}</strong></td>    
+        </tr> 
+        <tr>
+          <td colspam="2" class="marg">Jaén, {{today|date:"dd/MM/yyyy"}} </td>  
+        </tr> 
+        <tr>  
+          <td colspam="2"><img src="assets/firma_vago.jpg"></td>  
+        </tr> 
         
-        <div class="cuadro">
-            <div class="text">
-                 <p>  
-                     D/Dñª {{afiliado.nombre}} {{afiliado.apellidos}}----------
-                 </p>
-                 <p>
-                    Jaén, {{today |date: 'dd/MM/yyyy'}}  
-                 </p>
-            </div>
-         
-        </div> 
-        
-      <mat-card>  
-        
-          <input type="button" value="DESCARGUE AQUI SU CARNET DE AFILIADO AL PARTIDO DE VAGOS Y DE ASPIRANTE A CARGOS" (click)="captureScreen()"/>  
-        
-      </mat-card>  
+      </table> 
   
+</mat-card> 
+<mat-card class="example-card">  
+  <input type="button" value="DESCARGUE AQUI SU CARNET DE AFILIADO AL PARTIDO DE VAGOS Y DE ASPIRANTE A CARGOS" (click)="captureScreen()"/>
+</mat-card>  
+<!--
+ <div class="cuadro"> //Queda muy bien pero no genera correctamente el pdf
+   //Imagen de fondo va mal para descargar
+    <div class="text">
+         <p>  
+             D/Dñª {{afiliado.nombre}} {{afiliado.apellidos}}----------
+         </p>
+         <p>
+            Jaén, {{today |date: 'dd/MM/yyyy'}}  
+         </p>
+    </div>
+ 
+</div> 
+
+<mat-card>  
+
+  <input type="button" value="DESCARGUE AQUI SU CARNET DE AFILIADO AL PARTIDO DE VAGOS Y DE ASPIRANTE A CARGOS" (click)="captureScreen()"/>  
+
+</mat-card>
+-->  

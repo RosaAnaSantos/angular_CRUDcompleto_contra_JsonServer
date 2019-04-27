@@ -14,7 +14,7 @@ table {
   .container {
     margin-left:3%;
     margin-right:3%;
-    height: 900px;
+    height: 84vh;
     overflow:scroll; 
   }
   .cabecera{
@@ -24,5 +24,15 @@ table {
     margin-bottom: 12px;
   }
   .h_uno{
+    color: rgb(34, 172, 218);
+  }
+  h4{
+    margin-right: 6px;
+    margin-right: 6px;
+  }
+  th{
+    font-size: 1.2vw;
+  }
+  a{
     color: rgb(34, 172, 218);
   }

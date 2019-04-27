@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Afiliado } from '../modelos/afiliado';
-import { AfiliadosService } from '../afiliados.service';
+import { AfiliadosService } from '../afiliados.service'; 
+import {CarnetService} from '../carnet.service';
 import { FormControl } from "@angular/forms";
 import { Validators } from "@angular/forms";
 import Swal from 'sweetalert2';
 import { hasLifecycleHook } from '@angular/compiler/src/lifecycle_reflector';
+import { CarnetpdfComponent } from '../carnetpdf/carnetpdf.component';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -13,9 +15,10 @@ import { hasLifecycleHook } from '@angular/compiler/src/lifecycle_reflector';
 export class RegistroComponent {
  hideRegistro:boolean=false; 
  hideCarnet:boolean=true;
-  sexoSeleccionado:string;
+ //mensaje:Afiliado;
   afiliado: Afiliado = {id:null, dni:null, nombre:'', apellidos:'',edad:null, profesion:'', ideologia:'', tratamiento:'', cuota:null, status:'', email:'', pass:'', votos:null};  
  // valorPadre:string='Esto viene del padre';
+ @ViewChild(CarnetpdfComponent) carnet: CarnetpdfComponent;
 
   tipoSexo = [
     'Señor',
@@ -40,7 +43,7 @@ export class RegistroComponent {
     ];
   
 
-  constructor(private afiliadosService: AfiliadosService) { 
+  constructor(private afiliadosService: AfiliadosService, private carnetServicio: CarnetService) { 
  
   }
  
@@ -54,8 +57,22 @@ export class RegistroComponent {
       text: '¡Registrado correctamente',
       footer: '<a href></a>'
     })
+    //this.carnetServicio.guardarAfiliado(this.afiliado);
+    this.carnet.verCarnet(this.afiliado);
     this.hideRegistro=true;
     this.hideCarnet=false;
   }
+
+  ngOnInit() {
+  /*  this.carnetServicio.enviarMensajeObservable.subscribe(mensaje => {
+      this.mensaje = mensaje;
+    });
+    */
+  }
+/*
+  cambioTexto(mensaje:Afiliado) {
+    this.carnetServicio.enviarMensaje(mensaje);
+  }
+  */
 }
 

@@ -18,7 +18,7 @@ export class AfiliadosService {
   getAfiliados(): Observable<Afiliado[]> {
     return this.http.get<Afiliado[]>(this.url);
   }
-//--
+
   getAfiliado(id: number | string): Observable<Afiliado> {
     return this.http.get<Afiliado>(this.url + '/' + id);
   }

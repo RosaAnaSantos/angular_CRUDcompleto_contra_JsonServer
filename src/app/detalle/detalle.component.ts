@@ -23,7 +23,6 @@ export class DetalleComponent implements OnInit {
   hideActualizar:boolean=true;
   hideTable:boolean=false;
   hideFotoActualizar:boolean=false;
-  
   tipoSexo = [
     'Señor',
     'Señora',
@@ -51,7 +50,11 @@ export class DetalleComponent implements OnInit {
     }
 
   ngOnInit() {
-
+    /*
+    this.carnetService.enviarMensajeObservable.subscribe(mensaje => {
+    this.mensaje = mensaje;
+    });
+    */
     console.log('Iniciando componente...');
     this.afiliado = this.route.paramMap.pipe(
       switchMap(
@@ -64,7 +67,7 @@ editarAfiliado(){
   this.hideActualizar=false;
   this.hideTable=false;
   this.hideUpdate=true;
-  this.hideFotoActualizar=false;
+  this.hideFotoActualizar=true;
 }
 
 actualizarAfiliado(afiliado:Afiliado){
@@ -86,8 +89,6 @@ actualizarAfiliado(afiliado:Afiliado){
     text: '¡Error al modificar, no ha podido ser !  ',
     footer: '<a href></a>'
   })
-  this.hideActualizar=false;
-
 }
 
 
@@ -131,5 +132,6 @@ deleteAfiliado(afiliado: Afiliado){
     }
   })
  }
+
 }
   

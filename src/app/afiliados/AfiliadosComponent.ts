@@ -15,7 +15,7 @@ export class AfiliadosComponent implements OnInit {
   hoy=new Date();
   afiliados: Afiliado[];
   afiliado:Observable<Afiliado[]>;
-  displayedColumns: string[] = ['id', 'dni', 'nombre', 'apellidos', 'edad','profesion', 'ideologia', 'tratamiento', 'cuota', 'status','email', 'pass', 'votos'];
+  displayedColumns: string[] = ['dni', 'nombre', 'apellidos', 'edad','profesion', 'ideologia', 'tratamiento', 'cuota', 'status'];
   constructor(private afiliadosService: AfiliadosService) { }
   ngOnInit() {
     const obsAfiliados: Observable<Afiliado[]> = this.afiliadosService.getAfiliados();
